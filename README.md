@@ -36,3 +36,31 @@ Egy microservices alkalmazás felépítése, Java service-ekkel, a microservice 
 
 Chris Richardson: Microservices Patterns, https://microservices.io/patterns/microservices.html
 Vaughn Vernon: Domain-Driven Design Distilled
+
+## Mentoring application
+
+### Vízió
+
+A mai cégeknél gyakori probléma, hogy az alkalmazottak nem
+látnak maguk előtt jól kidolgozott karrierútvonalat, nem kapnak
+megfelelő támogatást a szakmai fejlődésükhöz. Exit interjúkon
+gyakran elhangzik, hogy nem kaptak mentorálást, azaz személyes segítségnyújtást
+a továbblépéshez, új dolgok megtanulásához.
+
+Az alkalmazás célja annak támogatása, hogy az alkalmazottak
+folyamatosan lássanak maguk előtt egy, vagy több célt, amelyek
+eléréséért dolgozhatnak. A célok elérésének útvonala tiszta és átlátható
+legyen. Az alkalmazottak vezetői is tiszta rálátással rendelkezzenek
+a beosztottjaik előrehaladásáról.
+
+Az alkalmazás egy multinacionális vállalat számára kell kifejleszteni,
+amelyik több százezer alkalmazottal rendelkezik, különböző időzónákban,
+akik napi szinten használják az alkalmazást.
+
+Az alkalmazás elérhető legyen böngészőből és mobil eszközökről is.
+
+Előreláthatóan dinamikusan fejlődő alkalmazásról van szó, melyet a visszajelzések
+alapján folyamatosan fejleszteni kell, már most is rengeteg igény és ötlet
+merült fel vele kapcsolatban.
+
+Az alkalmazást már létező Kubernetes környezetbe kell telepíteni.
