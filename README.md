@@ -64,3 +64,41 @@ alapján folyamatosan fejleszteni kell, már most is rengeteg igény és ötlet
 merült fel vele kapcsolatban.
 
 Az alkalmazást már létező Kubernetes környezetbe kell telepíteni.
+
+
+## DDD
+
+Klasszikus service:
+
+```java
+class BillService {
+
+  private BillItemDao dao;
+
+  @Transactional
+  public void incrementPrices(long billId, double percent) {
+    List<BillItems> items = dao.findBillItems(billId);
+    for (BillItem item: items) {
+      item.setPrice(item.getPrice() * percent);
+    }
+  }
+
+}
+```
+
+DDD service:
+
+```java
+class BillService {
+
+  private BillRepository repo;
+
+  @Transactional
+  public void incrementPrices(long billId, double percent) {
+    Bill bill = repo.findBillById(billId);
+    bill.increasePriceBy(percent);
+  }
+
+}
+
+```
