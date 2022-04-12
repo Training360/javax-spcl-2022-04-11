@@ -32,3 +32,12 @@ Content-Type: application/json
   "limit": 5,
   "skills": [1, 2, 3]
 }
+
+### Enrollment
+
+POST http://localhost:8083/api/courses/2/enrollments
+Content-Type: application/json
+
+{
+  "employeeId": 1
+}

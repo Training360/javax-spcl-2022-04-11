@@ -4,6 +4,7 @@ import courseservice.dto.CourseDetailsView;
 import courseservice.dto.CreateCourseCommand;
 import courseservice.dto.CourseView;
 import courseservice.service.CourseService;
+import courseservice.service.EnrollCommand;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,20 +19,27 @@ public class CourseController {
 
     private CourseService courseService;
 
-    @GetMapping
-    public List<CourseView> findAll() {
-        return courseService.findAllCourseViews();
-    }
+//    @GetMapping
+//    public List<CourseView> findAll() {
+//        return courseService.findAllCourseViews();
+//    }
+//
+//    @GetMapping("/{id}")
+//    public CourseDetailsView findById(@PathVariable("id") long id) {
+//        return courseService.findCourseById(id);
+//    }
 
-    @GetMapping("/{id}")
-    public CourseDetailsView findById(@PathVariable("id") long id) {
-        return courseService.findCourseById(id);
-    }
-
-    @PostMapping // nem idempotens
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CourseView createDocument(@RequestBody CreateCourseCommand command) {
+    public CourseView createCourse(@RequestBody CreateCourseCommand command) {
         return courseService.createCourse(command);
+    }
+
+    @PostMapping("{courseId}/enrollments")
+    @ResponseStatus(HttpStatus.CREATED)
+    public CourseView enroll(@PathVariable long courseId, @RequestBody EnrollCommand command) {
+        command.setCourseId(courseId);
+        return courseService.enroll(command);
     }
 
 
