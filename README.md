@@ -112,4 +112,6 @@ docker run -d -e "discovery.type=single-node" -e xpack.security.enabled=false -p
 
 ```shell
 docker compose up -d
+docker exec -it kafka-kafka-1 kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
+docker exec -it kafka-kafka-1 kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
 ```
