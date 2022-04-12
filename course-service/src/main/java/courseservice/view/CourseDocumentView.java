@@ -1,14 +1,13 @@
-package courseservice.dto;
+package courseservice.view;
 
-import lombok.Builder;
 import lombok.Data;
-import lombok.Value;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.util.List;
 
 @Data
-@Builder
-public class CourseCreatedEvent {
+public class CourseDocumentView {
 
     private Long id;
 

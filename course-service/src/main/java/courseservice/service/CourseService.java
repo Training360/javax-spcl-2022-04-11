@@ -26,6 +26,7 @@ public class CourseService {
     public CourseView createCourse(CreateCourseCommand command) {
         var response = Course.createCourse(command);
         courseRepository.save(response.getCourse());
+        response.getEvent().setId(response.getCourse().getId());
         publisher.publishEvent(response.getEvent());
         return courseMapper.toView(response.getCourse());
     }

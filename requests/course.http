@@ -3,7 +3,7 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8083/api/courses/1
+GET http://localhost:8083/api/courses/2
 Accept: application/json
 
 
@@ -41,3 +41,6 @@ Content-Type: application/json
 {
   "employeeId": 1
 }
+
+### Elastic
+GET http://localhost:8083/api/course-documents?word=magnis
