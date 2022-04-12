@@ -1,12 +1,15 @@
 package courseservice.model;
 
+import courseservice.dto.CourseCreatedEvent;
 import courseservice.dto.CreateCourseCommand;
+import courseservice.dto.CreateCourseResponse;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// Aggregate root
 @Entity
 @Data
 public class Course {
@@ -35,7 +38,22 @@ public class Course {
     @ElementCollection
     private List<Long> completedEmployees;
 
-    public static Course createCourse(CreateCourseCommand command) {
+    public static CreateCourseResponse createCourse(CreateCourseCommand command) {
+        var course = createCourseByCommand(command);
+        var event = createEventByCourse(course);
+        return new CreateCourseResponse(course, event);
+    }
+
+    private static CourseCreatedEvent createEventByCourse(Course course) {
+        return CourseCreatedEvent.builder()
+                .id(course.getId())
+                .name(course.getName())
+                .description(course.getDescription())
+                .syllabus(course.getSyllabus())
+                .skills(course.getSkills()).build();
+    }
+
+    private static Course createCourseByCommand(CreateCourseCommand command) {
         Course course = new Course();
         course.setName(command.getName());
         course.setDescription(command.getDescription());

@@ -19,15 +19,15 @@ public class CourseController {
 
     private CourseService courseService;
 
-//    @GetMapping
-//    public List<CourseView> findAll() {
-//        return courseService.findAllCourseViews();
-//    }
-//
-//    @GetMapping("/{id}")
-//    public CourseDetailsView findById(@PathVariable("id") long id) {
-//        return courseService.findCourseById(id);
-//    }
+    @GetMapping
+    public List<CourseView> findAll() {
+        return courseService.findAllCourseViews();
+    }
+
+    @GetMapping("/{id}")
+    public CourseDetailsView findById(@PathVariable("id") long id) {
+        return courseService.findCourseById(id);
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

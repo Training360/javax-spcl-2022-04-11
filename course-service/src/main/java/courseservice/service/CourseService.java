@@ -21,10 +21,13 @@ public class CourseService {
 
     private CourseMapper courseMapper;
 
+    private ApplicationEventPublisher publisher;
+
     public CourseView createCourse(CreateCourseCommand command) {
-        var course = Course.createCourse(command);
-        courseRepository.save(course);
-        return courseMapper.toView(course);
+        var response = Course.createCourse(command);
+        courseRepository.save(response.getCourse());
+        publisher.publishEvent(response.getEvent());
+        return courseMapper.toView(response.getCourse());
     }
 
     @Transactional
@@ -35,4 +38,13 @@ public class CourseService {
         return courseMapper.toView(course);
     }
 
+    public List<CourseView> findAllCourseViews() {
+        return courseRepository.findAllViews();
+    }
+
+    @Transactional(readOnly = true)
+    public CourseDetailsView findCourseById(long id) {
+        return courseMapper.toDetailsView(courseRepository.findById(id).orElseThrow(() ->
+                new NotFoundException(String.format("Course not found: %d", id))));
+    }
 }
