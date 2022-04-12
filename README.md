@@ -6,10 +6,10 @@ Egy microservices alkalmazás felépítése, Java service-ekkel, a microservice 
 
 * Microservice és monolitikus alkalmazás összehasonlítása
 * Bevezetés a microservice tervezési mintákba
-* Event sourcing
 * Domain driven design
 * Transaction script, domain model, aggregate
 * Domain event
+* Event storming
 * Serialization formátumok (JSON, Protocol Buffers, Avro)
 * REST hívások, OpenFeign, gRPC
 * Circuit breaker, Spring Cloud Circuit Breaker, Resilience4J
@@ -101,4 +101,10 @@ class BillService {
 
 }
 
+```
+
+## Implementáció
+
+```shell
+docker run -d -e POSTGRES_DB=course -e POSTGRES_USER=course -e POSTGRES_PASSWORD=course -p 5434:5432  --name course-postgres postgres
 ```
