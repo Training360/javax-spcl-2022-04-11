@@ -19,6 +19,7 @@ public class CommandHandler {
 
     @KafkaListener(topics = "courseservice-commands-topic", groupId = "courseservice-group")
     public void handleCommand(EnrollToCourseCommandMessage message) {
+        log.debug("Command: {}", message);
         var command = new EnrollCommand();
         command.setCourseId(message.getCourseId());
         command.setEmployeeId(message.getEmployeeId());

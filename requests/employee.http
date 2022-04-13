@@ -1,0 +1,16 @@
+### List employees 
+GET http://localhost:8081/api/employees
+Accept: application/json
+
+### Create employee
+
+POST http://localhost:8081/api/employees
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "roleId": 1
+}
+
+### Delete employee
+DELETE http://localhost:8081/api/employees/9
