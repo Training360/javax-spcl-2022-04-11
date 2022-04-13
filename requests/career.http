@@ -1,0 +1,31 @@
+GET http://localhost:8084/api/roles
+Accept: application/json
+
+###
+
+GET http://localhost:8084/api/roles/1
+Accept: application/json
+
+
+### Create role
+
+POST http://localhost:8084/api/roles
+Content-Type: application/json
+
+{
+  "name": "Java developer"
+}
+
+### Enroll
+
+POST http://localhost:8084/api/enrollments
+Content-Type: application/json
+
+{
+  "employeeId": 6,
+  "courseId": 7
+}
+
+### List enrollments
+GET http://localhost:8084/api/enrollments?employeeId=6
+

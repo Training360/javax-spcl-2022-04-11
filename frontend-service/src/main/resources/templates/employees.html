@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Employees</title>
+    <link href="employees.css" rel="stylesheet" />
+</head>
+<body>
+
+<h1>Employees</h1>
+
+<p th:replace="fragments/menu.html :: p"></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Links</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+            <td th:text="${employee.id}"></td>
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.role}"></td>
+            <td><a th:href="@{/calendar-items(employeeId=${employee.id})}">Calendar</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<form th:action="@{/employees}" th:object="${command}" method="post">
+        <label for="name-input">Name</label>
+        <input th:field="*{name}" id="name-input" />
+    <select th:field="*{roleId}">
+        <option th:each="course : ${roles}" th:value="${course.id}" th:text="${course.name}"></option>
+    </select>
+    <button type="submit" class="btn btn-primary">Create employee</button>
+</form>
+
+</body>
+</html>
