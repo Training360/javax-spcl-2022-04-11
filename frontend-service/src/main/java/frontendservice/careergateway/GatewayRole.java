@@ -3,7 +3,7 @@ package frontendservice.careergateway;
 import lombok.Data;
 
 @Data
-public class Role {
+public class GatewayRole {
 
     private Long id;
 

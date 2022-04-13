@@ -10,5 +10,5 @@ import java.util.List;
 public interface CareerClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/api/roles")
-    List<Role> listRoles();
+    List<GatewayRole> listRoles();
 }
