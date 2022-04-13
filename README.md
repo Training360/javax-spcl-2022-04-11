@@ -115,3 +115,7 @@ docker compose up -d
 docker exec -it kafka-kafka-1 kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
 docker exec -it kafka-kafka-1 kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
 ```
+
+```shell
+docker run -d -e POSTGRES_DB=career -e POSTGRES_USER=career -e POSTGRES_PASSWORD=career -p 5435:5432  --name career-postgres postgres
+```
