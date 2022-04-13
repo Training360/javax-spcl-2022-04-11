@@ -1,4 +1,4 @@
-package frontendservice.service;
+package frontendservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

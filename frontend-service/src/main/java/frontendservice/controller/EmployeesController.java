@@ -1,8 +1,6 @@
 package frontendservice.controller;
 
-import frontendservice.employeesgateway.CreateEmployeeCommand;
-import frontendservice.employeesgateway.EmployeeClient;
-import frontendservice.inboxgateway.CalendarItemDto;
+import frontendservice.dto.CreateEmployeeCommand;
 import frontendservice.service.EmployeesService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,13 +33,6 @@ public class EmployeesController {
     public ModelAndView createEmployee(@ModelAttribute CreateEmployeeCommand command) {
         employeesService.createEmployee(command);
         return new ModelAndView("redirect:/employees");
-    }
-
-    @GetMapping("/calendar-items")
-    public ModelAndView listInbox(@RequestParam long employeeId) {
-        List<CalendarItemDto> calendarItems = employeesService.listInbox(employeeId);
-        var model = Map.of("calendarItems", calendarItems);
-        return new ModelAndView("calendar-items", model);
     }
 
 }
