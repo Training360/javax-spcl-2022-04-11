@@ -1,6 +1,7 @@
 package careerservice.saga;
 
 import careerservice.courseservicegateway.Gateway;
+import careerservice.courseservicegateway.KafkaGateway;
 import careerservice.dto.EnrollmentView;
 import careerservice.model.EnrollCommand;
 import careerservice.service.EnrollmentService;
