@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: employeeservice
+  name: employeeservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: employeeservice
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: employeeservice
+    spec:
+      containers:
+      - image: employeeservice:0.0.1
+        name: employeeservice
+        env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres/employees
+            - name: SERVER_PORT
+              value: "8080"
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: employeeservice
+  name: employeeservice
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: employeeservice
+  type: ClusterIP

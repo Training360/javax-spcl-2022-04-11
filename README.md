@@ -123,3 +123,7 @@ docker run -d -e POSTGRES_DB=career -e POSTGRES_USER=career -e POSTGRES_PASSWORD
 ```shell
 docker run -d -e POSTGRES_DB=employees -e POSTGRES_USER=employees -e POSTGRES_PASSWORD=employees -p 5432:5432  --name employees-postgres postgres
 ```
+
+```shell
+docker run -d -p 9411:9411 --name zipkin openzipkin/zipkin
+```
